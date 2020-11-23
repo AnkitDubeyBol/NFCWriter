@@ -3,11 +3,14 @@ package com.lji.nfcwriter
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.nfc.FormatException
 import android.nfc.NfcAdapter
 import android.nfc.NfcManager
+import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior.getTag
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
@@ -55,6 +58,25 @@ class MainActivity : AppCompatActivity() {
         nfcAdapter = nfcManager.defaultAdapter
     }
 
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        val tagFromIntent = intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)
+        try {
+            tag = WritableTag(tagFromIntent!!)
+        } catch (e: FormatException) {
+            Log.e("Uff", "Unsupported tag tapped", e)
+            return
+        }
+        tagId = tag!!.tagId
+        Log.e(javaClass.name,"Tag tapped")
+
+//        if (NfcAdapter.ACTION_NDEF_DISCOVERED == intent.action) {
+//            val rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
+//            if (rawMsgs != null) {
+//                onTagTapped(NfcUtils.getUID(intent), NfcUtils.getData(rawMsgs))
+//            }
+//        }
+    }
 
     override fun onPause() {
         disableNfcForegroundDispatch()
