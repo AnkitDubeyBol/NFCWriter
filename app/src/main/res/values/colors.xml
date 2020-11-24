@@ -7,4 +7,22 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="background">#121212</color>
+    <color name="primaryColor">#7885FF</color>
+    <color name="primaryDarkColor">#cccccc</color>
+    <color name="error">#EB5757</color>
+    <color name="green">#4bb543</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="primaryLightColor">#242424</color>
+    <color name="onSecondary">#000000</color>
+    <color name="onBackground">#FFFFFF</color>
+    <color name="secondaryColor">#FFCC32</color>
+    <color name="statusBarColor">#1A191E</color>
+    <color name="actionBarColor">#121212</color>
+    <color name="offBackground">#000000</color>
+    <color name="primaryTextColor">#b2b2b2</color>
+    <color name="secondaryTextColor">#000000</color>
+
+
 </resources>
